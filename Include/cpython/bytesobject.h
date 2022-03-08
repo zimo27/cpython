@@ -4,7 +4,7 @@
 
 typedef struct {
     PyObject_VAR_HEAD
-    Py_hash_t ob_shash;
+    Py_DEPRECATED(3.11) Py_hash_t ob_shash;
     char ob_sval[1];
 
     /* Invariants:
@@ -116,22 +116,3 @@ PyAPI_FUNC(void*) _PyBytesWriter_WriteBytes(_PyBytesWriter *writer,
     void *str,
     const void *bytes,
     Py_ssize_t size);
-
-/* Substring Search.
-
-   Returns the index of the first occurence of
-   a substring ("needle") in a larger text ("haystack").
-   If the needle is not found, return -1.
-   If the needle is found, add offset to the index.
-*/
-
-PyAPI_FUNC(Py_ssize_t)
-_PyBytes_Find(const char *haystack, Py_ssize_t len_haystack,
-              const char *needle, Py_ssize_t len_needle,
-              Py_ssize_t offset);
-
-/* Same as above, but search right-to-left */
-PyAPI_FUNC(Py_ssize_t)
-_PyBytes_ReverseFind(const char *haystack, Py_ssize_t len_haystack,
-                     const char *needle, Py_ssize_t len_needle,
-                     Py_ssize_t offset);
