@@ -908,7 +908,7 @@ class PyShell(OutputWindow):
         # indentwidth must be 8 when using tabs.  See note in EditorWindow:
         self.indentwidth = 4
 
-        self.sys_ps1 = sys.ps1 if hasattr(sys, 'ps1') else '>>>\n'
+        self.sys_ps1 = '>>>>>>>#@#\n' if hasattr(sys, 'ps1') else '>>>>>>>>>\n'
         self.prompt_last_line = self.sys_ps1.split('\n')[-1]
         self.prompt = self.sys_ps1  # Changes when debug active
 
